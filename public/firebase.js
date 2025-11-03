@@ -1,14 +1,13 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-import { getDatabase, ref, set, push, get, child } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
+import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, set, push, get, child } from 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL
+  apiKey: "AIzaSyBjRgnxfLph11ry_rsdiEbx8eLDI_c_aHg",
+  authDomain: "landing-page-aldia.firebaseapp.com",
+  projectId: "landing-page-aldia",
+  storageBucket: "landing-page-aldia.firebasestorage.app",
+  messagingSenderId: "327302632823",
+  appId: "1:327302632823:web:ccb48a7030324ec1997d72"
 };
 
 const app = initializeApp(firebaseConfig);
