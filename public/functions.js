@@ -1,10 +1,5 @@
 "use strict";
 
-let terminos = document.querySelector("#terms");
-terminos.addEventListener("click", function() {
-  alert("Tu confia")
-})
-
 const carousel = document.getElementById("carousel");
   const slides = carousel.children.length;
   const dots = document.querySelectorAll(".dot");
