@@ -69,64 +69,35 @@
 
     <section id="reseñas" class="py-15 pb-8 bg-white">
       <div class="max-w-6xl mx-auto px-6 text-center">
-        <h3 class="text-3xl font-bold text-gray-900 mb-12">Lo que dicen nuestros usuarios</h3>
 
-        
+        <h3 class="text-3xl font-bold text-gray-900 mb-12">
+          Lo que dicen nuestros usuarios
+        </h3>
+
         <div class="relative overflow-hidden">
 
-          <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
-            
-            <div class="w-full flex-shrink-0 px-6">
-              <div class="bg-indigo-50 p-8 rounded-2xl shadow-md max-w-3xl mx-auto">
-                <p class="text-lg text-gray-700 italic mb-4">
-                  “Desde que uso Al Día, finalmente tengo control de todas mis suscripciones.
-                  Ya no pago servicios que había olvidado cancelar.”
-                </p>
-                <h4 class="font-semibold text-indigo-600">María Gómez</h4>
-                <p class="text-gray-500 text-sm">Estudiante universitaria</p>
-              </div>
-            </div>
-
-            <div class="w-full flex-shrink-0 px-6">
-              <div class="bg-indigo-50 p-8 rounded-2xl shadow-md max-w-3xl mx-auto">
-                <p class="text-lg text-gray-700 italic mb-4">
-                  “La función de estadísticas me ayuda a ver en qué se me va el dinero.
-                  Es perfecta para organizar mis finanzas personales.”
-                </p>
-                <h4 class="font-semibold text-indigo-600">Carlos Méndez</h4>
-                <p class="text-gray-500 text-sm">Diseñador freelance</p>
-              </div>
-            </div>
-
-            <div class="w-full flex-shrink-0 px-6">
-              <div class="bg-indigo-50 p-8 rounded-2xl shadow-md max-w-3xl mx-auto">
-                <p class="text-lg text-gray-700 italic mb-4">
-                  “Con el plan familiar, todos en casa sabemos cuánto gastamos en plataformas.
-                  Es sencilla, intuitiva y muy útil.”
-                </p>
-                <h4 class="font-semibold text-indigo-600">Laura Paredes</h4>
-                <p class="text-gray-500 text-sm">Madre de familia</p>
-              </div>
-            </div>
-
+          <div id="carousel"
+            class="flex transition-transform duration-500 ease-in-out">
           </div>
 
-          <button id="prev" 
-            class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-indigo-600/90 text-white rounded-full p-4 border border-white/40 hover:bg-indigo-700 transition shadow-md">
+          <button id="prev"
+            class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-indigo-600/90 text-white rounded-full p-4">
             &#10094;
           </button>
-          <button id="next" 
-            class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-indigo-600/90 text-white rounded-full p-4 border border-white/40 hover:bg-indigo-700 transition shadow-md">
+
+          <button id="next"
+            class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-indigo-600/90 text-white rounded-full p-4">
             &#10095;
           </button>
 
-        <div class="flex justify-center mt-6 space-x-2">
-          <button class="dot w-3 h-3 rounded-full bg-indigo-300"></button>
-          <button class="dot w-3 h-3 rounded-full bg-indigo-300"></button>
-          <button class="dot w-3 h-3 rounded-full bg-indigo-300"></button>
+          <div id="dotsContainer" class="flex justify-center mt-6 space-x-2"></div>
+
         </div>
       </div>
     </section>
+
+
+
 
     <section id="planes" class="py-20 bg-indigo-50">
       <div class="max-w-6xl mx-auto px-6 text-center">
@@ -197,61 +168,86 @@
           Crear una cuenta
         </h1>
 
-        <form id="formRegistrar" class="space-y-5">
+        <form id="formResena" class="space-y-5">
+
+          <!-- Nombre del usuario -->
           <div>
-            <label for="email" class="block mb-2 text-sm font-medium text-gray-700">Correo electrónico</label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email"
-              placeholder="tucorreo@ejemplo.com"
-              required
-              class="w-full border border-gray-300 rounded-xl p-3 text-gray-900 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
-            />
-          </div>
-          <div>
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-700">Contraseña</label>
-            <input 
-              type="password" 
-              id="password" 
-              name="password"
-              placeholder="••••••••"
-              required
-              class="w-full border border-gray-300 rounded-xl p-3 text-gray-900 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
-            />
-          </div>
-          <div>
-            <label for="confirm-password" class="block mb-2 text-sm font-medium text-gray-700">Confirmar contraseña</label>
-            <input 
-              type="password" 
-              id="confirm-password" 
-              name="confirm-password"
-              placeholder="••••••••"
-              required
-              class="w-full border border-gray-300 rounded-xl p-3 text-gray-900 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
-            />
-          </div>
-          <div class="flex items-start">
-            <input 
-              id="terms" 
-              type="checkbox" 
-              required
-              class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
-            />
-            <label for="terms" class="ml-2 text-sm text-gray-600">
-              Acepto los <a href="#" class="text-indigo-600 hover:underline">Términos y Condiciones</a>
+            <label for="nombre" class="block mb-2 text-sm font-medium text-gray-700">
+              Tu nombre
             </label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Ej: Gabriel P."
+              required
+              class="w-full border border-gray-300 rounded-xl p-3 text-gray-900 text-sm 
+                    focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+            />
           </div>
-          <button 
-            id="submit"
+
+          <!-- Ocupación del usuario -->
+          <div>
+            <label for="ocupacion" class="block mb-2 text-sm font-medium text-gray-700">
+              Tu ocupación
+            </label>
+            <input
+              type="text"
+              id="ocupacion"
+              name="ocupacion"
+              placeholder="Ej: Estudiante, Diseñador, Ingeniero..."
+              required
+              class="w-full border border-gray-300 rounded-xl p-3 text-gray-900 text-sm 
+                    focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+            />
+          </div>
+
+          <!-- Calificación -->
+          <div>
+            <label for="rating" class="block mb-2 text-sm font-medium text-gray-700">
+              Calificación (1 a 5)
+            </label>
+            <select
+              id="rating"
+              name="rating"
+              required
+              class="w-full border border-gray-300 rounded-xl p-3 text-gray-900 text-sm 
+                    focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+            >
+              <option value="">Selecciona una opción</option>
+              <option value="1">⭐ (1)</option>
+              <option value="2">⭐⭐ (2)</option>
+              <option value="3">⭐⭐⭐ (3)</option>
+              <option value="4">⭐⭐⭐⭐ (4)</option>
+              <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+            </select>
+          </div>
+
+          <!-- Texto de la reseña -->
+          <div>
+            <label for="comentario" class="block mb-2 text-sm font-medium text-gray-700">
+              Tu reseña
+            </label>
+            <textarea
+              id="comentario"
+              name="comentario"
+              rows="4"
+              placeholder="Escribe tu experiencia usando Al Día..."
+              required
+              class="w-full border border-gray-300 rounded-xl p-3 text-gray-900 text-sm 
+                    focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+            ></textarea>
+          </div>
+
+          <!-- Botón de enviar -->
+          <button
             type="submit"
-            class="w-full bg-indigo-600 text-white py-3 rounded-xl font-semibold hover:bg-indigo-700 transition focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2">
-            Crear cuenta
+            class="w-full bg-indigo-600 text-white py-3 rounded-xl font-semibold 
+                  hover:bg-indigo-700 transition"
+          >
+            Enviar reseña
           </button>
-          <p class="text-sm text-center text-gray-600">
-            ¿Ya tienes una cuenta?
-            <a href="#" class="text-indigo-600 font-medium hover:underline">Inicia sesión aquí</a>
-          </p>
+
         </form>
       </div>
     </section>

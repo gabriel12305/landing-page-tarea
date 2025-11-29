@@ -2,12 +2,12 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set, push, get, child } from 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBjRgnxfLph11ry_rsdiEbx8eLDI_c_aHg",
-  authDomain: "landing-page-aldia.firebaseapp.com",
-  projectId: "landing-page-aldia",
-  storageBucket: "landing-page-aldia.firebasestorage.app",
-  messagingSenderId: "327302632823",
-  appId: "1:327302632823:web:ccb48a7030324ec1997d72"
+  apiKey: "AIzaSyBimwM1KdZ4NWo_oxYbhQxMTSUj2W2sPmk",
+  authDomain: "landing2-9af07.firebaseapp.com",
+  projectId: "landing2-9af07",
+  storageBucket: "landing2-9af07.firebasestorage.app",
+  messagingSenderId: "169120870256",
+  appId: "1:169120870256:web:7c93bd5573766996d8e9b5"
 };
 
 const app = initializeApp(firebaseConfig);

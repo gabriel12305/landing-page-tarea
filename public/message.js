@@ -1,54 +1,71 @@
 import { database, ref, set, push, get, child } from './firebase';
 
-const enviarDatos = async (datos) => {
-    try{
-        const referencia = ref(database, "contactos");
-        const newRef = push(referencia);
+/* -----------------------------
+   GUARDAR RESEÑAS EN FIREBASE
+------------------------------ */
+const enviarResena = async (datos) => {
+  try {
+    // Referencia a /reseñas
+    const referencia = ref(database, "reseñas");
+    const nuevaRef = push(referencia);
 
-        await set(newRef, {
-            email: datos.email,
-            password: datos.password
-        })
-        
-        return {
-                status: true,
-                message: "Data sent successfully"
-        }
+    await set(nuevaRef, {
+      nombre: datos.nombre,
+      ocupacion: datos.ocupacion,
+      rating: datos.rating,
+      texto: datos.comentario,
+      fecha: Date.now()
+    });
 
-    }catch (error){
-        console.error("Error saving data: ", error);
-        return {
-            status: false,
-            message: "Error saving data"
-        }
-    }
+    return {
+      status: true,
+      message: "Reseña guardada correctamente"
+    };
+
+  } catch (error) {
+    console.error("Error guardando reseña:", error);
+    return {
+      status: false,
+      message: "Error al guardar la reseña"
+    };
+  }
 };
 
-const formulario = document.getElementById("formRegistrar")
+/* -----------------------------
+   EVENTO PARA EL FORMULARIO
+------------------------------ */
+const formulario = document.getElementById("formResena");
 
 formulario.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const datos = {
-        email: document.getElementById("email").value,
-        password: document.getElementById("password").value
-    }
+  const datos = {
+    nombre: document.getElementById("nombre").value,
+    ocupacion: document.getElementById("ocupacion").value,
+    rating: parseInt(document.getElementById("rating").value),
+    comentario: document.getElementById("comentario").value
+  };
 
-    const exito = await enviarDatos(datos);
-  
-    if (exito) {
-        alert('Mensaje enviado correctamente');
-        formulario.reset();
-    } else {
-        alert('Error al enviar el mensaje');
-    }
+  const exito = await enviarResena(datos);
+
+  if (exito.status) {
+    alert("Reseña enviada correctamente");
+    formulario.reset();
+    cargarReseñas(); // Recarga el carrusel automáticamente
+  } else {
+    alert("Hubo un error al enviar tu reseña");
+  }
 });
 
+/* -----------------------------
+   CARGAR RESEÑAS DESDE FIREBASE
+------------------------------ */
 async function cargarReseñas() {
   const dbRef = ref(database);
 
   try {
     const snapshot = await get(child(dbRef, "reseñas"));
+
     if (snapshot.exists()) {
       const reseñas = Object.values(snapshot.val());
       mostrarReseñas(reseñas);
@@ -60,6 +77,9 @@ async function cargarReseñas() {
   }
 }
 
+/* -----------------------------
+   MOSTRAR RESEÑAS EN CARROUSEL
+------------------------------ */
 function mostrarReseñas(reseñas) {
   const contenedor = document.getElementById("carousel");
   contenedor.innerHTML = "";
@@ -67,18 +87,21 @@ function mostrarReseñas(reseñas) {
   reseñas.forEach((r) => {
     const item = document.createElement("div");
     item.className = "w-full flex-shrink-0 px-6";
-
     item.innerHTML = `
       <div class="bg-indigo-50 p-8 rounded-2xl shadow-md max-w-3xl mx-auto">
         <p class="text-lg text-gray-700 italic mb-4">“${r.texto}”</p>
         <h4 class="font-semibold text-indigo-600">${r.nombre}</h4>
         ${r.ocupacion ? `<p class="text-gray-500 text-sm">${r.ocupacion}</p>` : ""}
-        <p class="text-yellow-400 text-sm mt-2">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</p>
+        <p class="text-yellow-400 text-sm mt-2">
+          ${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}
+        </p>
       </div>
     `;
-
     contenedor.appendChild(item);
   });
+
+  inicializarCarrusel(); // ← MUY IMPORTANTE
 }
+
 
 document.addEventListener("DOMContentLoaded", cargarReseñas);
